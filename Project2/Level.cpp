@@ -47,11 +47,10 @@ Level::Level(sf::RenderWindow* hwnd, Input* in)
 Level::~Level()
 {
 }
+
 void Level::update()
 {
-
-	rect4.setOrigin(5, 20);
-	
+	rect4.setOrigin(5, 20);	
 }
 
 void Level::handleInput()
