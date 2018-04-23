@@ -8,6 +8,7 @@ Level::Level(sf::RenderWindow* hwnd, Input* in)
 {
 	player.setSize(sf::Vector2f(20, 20));
 	player.setPosition(400, 300);
+	
 
 	rect.setSize(sf::Vector2f(50, 50));
 	rect.setPosition(100, 100);
@@ -87,6 +88,7 @@ void Level::render()
 	beginDraw();
 	//renders the rectangle in the program
 	window->draw(rect);
+	window->draw(player);
 	//renders the circle in the program
 	window->draw(circle);
 	//window->draw(rect1);
