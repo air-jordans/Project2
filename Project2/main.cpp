@@ -16,6 +16,10 @@ void main()
 	sf::Clock clock;
 	float deltaTime;
 
+	bool levelExists = false;
+
+	Level level;
+
 	// Game loop
 	while (window.isOpen())
 	{
@@ -45,11 +49,32 @@ void main()
 				break;
 			}
 		}
-
-		menu.menuLoopInterface();
+		if (menu.playButtonSelected) {
+			if (levelExists) {
+				if (level.isAlive()) {
+					level.levelLoopInterface();
+				}
+				else if (!level.isAlive()) {
+					// Get level score/data etc.
+					levelExists = false;
+					menu.playButtonSelected = false;
+				}
+			}
+			else if (!levelExists){
+				level = Level(&window, &input);
+				levelExists = true;
+				// Create level
+			}
+		}
+		else {
+			menu.menuLoopInterface();
+		}
+		
 
 		// Run at 60 fps
 		sf::Time timeTaken = clock.getElapsedTime();
+
+		// Make sure to not try and sleep for a negative time
 		if (timeTaken.asMilliseconds() <= 33) {
 			std::this_thread::sleep_for(std::chrono::milliseconds(33 - timeTaken.asMilliseconds()));
 		}

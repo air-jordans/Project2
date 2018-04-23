@@ -16,6 +16,7 @@ public:
 	void renderBackground();
 	void handleInput();
 	void menuLoopInterface();
+	bool playButtonSelected = false;
 private:
 	Input* input;
 	sf::RenderWindow* window;

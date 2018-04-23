@@ -5,12 +5,15 @@
 #include "Input.h"
 class Level {
 public:
+	Level();
 	Level(sf::RenderWindow* hwnd, Input* in);
 	~Level();
 
 	void handleInput();
 	void update();
 	void render();
+	bool isAlive();
+	void levelLoopInterface();
 private:
 	sf::RectangleShape rect;
 	sf::CircleShape circle;
@@ -26,4 +29,6 @@ private:
 	sf::Event event;
 	void beginDraw();
 	void endDraw();
+	bool alive = true;
+	Input* input;
 };
