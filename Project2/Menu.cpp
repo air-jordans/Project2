@@ -9,7 +9,7 @@ Menu::Menu(sf::RenderWindow* hwnd, Input* inp)
 	input = inp;
 	initButtons();
 	initStars();
-	setMusic("res/music/menu.wav");
+	setMusic("res/music/menu1.wav");
 	playMusic();
 }
 

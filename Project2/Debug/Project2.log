@@ -1,2 +1,8 @@
-﻿C:\Program Files (x86)\Microsoft Visual Studio\2017\Community\Common7\IDE\VC\VCTargets\Microsoft.CppBuild.targets(387,5): warning MSB8028: The intermediate directory (Debug\) contains files shared from another project (New Start.vcxproj).  This can lead to incorrect clean and rebuild behavior.
-  Project2.vcxproj -> C:\Users\paulm\source\repos\Project2\Debug\Project2.exe
+﻿C:\Program Files (x86)\Microsoft Visual Studio\2017\Community\Common7\IDE\VC\VCTargets\Microsoft.CppBuild.targets(391,5): warning MSB8028: The intermediate directory (Debug\) contains files shared from another project (New Start.vcxproj).  This can lead to incorrect clean and rebuild behavior.
+  Menu.cpp
+f:\programming\c++\project2\project2\menu.cpp(31): warning C4018: '<': signed/unsigned mismatch
+f:\programming\c++\project2\project2\menu.cpp(34): warning C4244: 'initializing': conversion from 'double' to 'int', possible loss of data
+f:\programming\c++\project2\project2\menu.cpp(35): warning C4244: 'initializing': conversion from 'double' to 'int', possible loss of data
+f:\programming\c++\project2\project2\menu.cpp(38): warning C4244: 'argument': conversion from 'double' to 'float', possible loss of data
+f:\programming\c++\project2\project2\menu.cpp(180): warning C4018: '<': signed/unsigned mismatch
+  Project2.vcxproj -> F:\Programming\c++\Project2\Debug\Project2.exe
