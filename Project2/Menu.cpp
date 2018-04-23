@@ -142,10 +142,10 @@ void Menu::handleInput() {
 	if (input->isKeyDown(sf::Keyboard::Return)) {
 		if (currentSelected == exit) {
 			// Exit the program
-			std::cout << "wtf\n";
 			window->close();
 		}
 		else if (currentSelected == play) {
+			playButtonSelected = true;
 			// create level and run
 		}
 		else if (currentSelected == options) {

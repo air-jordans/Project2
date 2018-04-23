@@ -1,5 +1,9 @@
 #include "Level.h"
 #include "Input.h"
+Level::Level() {
+
+}
+
 Level::Level(sf::RenderWindow* hwnd, Input* in)
 {
 	rect.setSize(sf::Vector2f(50, 50));
@@ -37,6 +41,7 @@ Level::Level(sf::RenderWindow* hwnd, Input* in)
 
 	//speed = 100.f;
 	
+	input = in;
 	window = hwnd;
 }
 Level::~Level()
@@ -48,17 +53,33 @@ void Level::update()
 	rect4.setOrigin(5, 20);
 	
 }
+
 void Level::handleInput()
 {
-	Input input;
 	// if space is pressed output to console
-	if (input.isKeyDown(sf::Keyboard::D))
-		{
-			input.setKeyUp(sf::Keyboard::D);
-			std::cout<< "D was pressed\n";
-		}
-
+	if (input->isKeyDown(sf::Keyboard::D))
+	{
+		input->setKeyUp(sf::Keyboard::D);
+		std::cout << "D was pressed\n";
 	}
+	if (input->isKeyDown(sf::Keyboard::X)) {
+		input->setKeyUp(sf::Keyboard::X);
+		std::cout << "X was pressed\n";
+		alive = false;
+	}
+}
+
+
+bool Level::isAlive() {
+	return alive;
+}
+
+void Level::levelLoopInterface() {
+	update();
+	handleInput();
+	render();
+}
+
 void Level::render()
 {
 	beginDraw();
@@ -70,7 +91,6 @@ void Level::render()
 	window->draw(rect2);
 	window->draw(rect3);
 	window->draw(rect4);
-	window->draw(text1);
 	
 	endDraw();
 }
