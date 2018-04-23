@@ -58,9 +58,11 @@ void main()
 					// Get level score/data etc.
 					levelExists = false;
 					menu.playButtonSelected = false;
+					menu.playMusic();
 				}
 			}
 			else if (!levelExists){
+				menu.stopMusic();
 				level = Level(&window, &input);
 				levelExists = true;
 				// Create level

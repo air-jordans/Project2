@@ -54,7 +54,7 @@ Level::~Level()
 
 void Level::update()
 {
-	rect4.setOrigin(5, 20);	
+	// Update logic
 }
 
 void Level::handleInput()
@@ -86,6 +86,8 @@ void Level::levelLoopInterface() {
 void Level::render()
 {
 	beginDraw();
+
+
 	//renders the rectangle in the program
 	window->draw(rect);
 	window->draw(player);

@@ -9,6 +9,8 @@ Menu::Menu(sf::RenderWindow* hwnd, Input* inp)
 	input = inp;
 	initButtons();
 	initStars();
+	setMusic("res/music/menu.wav");
+	playMusic();
 }
 
 Menu::~Menu()
@@ -66,6 +68,22 @@ void Menu::initButtons() {
 
 	exitButton.setTexture("res/exitButton.png");
 	exitButton.setRect(sf::IntRect(width / 2 - buttonWidth / 2, 480, buttonWidth, buttonHeight));
+}
+
+void Menu::setMusic(sf::String filename) {
+	if (!menuMusic.openFromFile(filename)) {
+		// error
+	}
+	menuMusic.setVolume(50);
+	menuMusic.setLoop(true);
+}
+
+void Menu::playMusic() {
+	menuMusic.play();
+}
+
+void Menu::stopMusic() {
+	menuMusic.stop();
 }
 
 void Menu::render() {
