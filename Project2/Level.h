@@ -15,6 +15,7 @@ private:
 	sf::RectangleShape rect;
 	sf::CircleShape circle;
 	float speed;
+	sf::RectangleShape player;
 	sf::RectangleShape rect1;
 	sf::RectangleShape rect2;
 	sf::RectangleShape rect3;

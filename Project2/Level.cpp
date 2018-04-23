@@ -2,6 +2,9 @@
 #include "Input.h"
 Level::Level(sf::RenderWindow* hwnd, Input* in)
 {
+	player.setSize(sf::Vector2f(20, 20));
+	player.setPosition(400, 300);
+
 	rect.setSize(sf::Vector2f(50, 50));
 	rect.setPosition(100, 100);
 	rect.setFillColor(sf::Color::Red);
