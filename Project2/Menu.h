@@ -1,5 +1,6 @@
 #pragma once
 #include <SFML/Graphics.hpp>
+#include <SFML/Audio.hpp>
 #include <string>
 #include <iostream>
 #include "Input.h"
@@ -16,6 +17,9 @@ public:
 	void renderBackground();
 	void handleInput();
 	void menuLoopInterface();
+	void setMusic(sf::String filename);
+	void playMusic();
+	void stopMusic();
 	bool playButtonSelected = false;
 private:
 	Input* input;
@@ -31,5 +35,6 @@ private:
 	const int options = 1;
 	const int scores = 2;
 	const int exit = 3;
+	sf::Music menuMusic;
 };
 
