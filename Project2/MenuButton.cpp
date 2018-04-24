@@ -18,6 +18,7 @@ void MenuButton::setTexture(sf::String str) {
 		// error
 	}
 	sprite.setTexture(tex);
+	std::cout << "texture loaded\n";
 }
 
 void MenuButton::setSelected(bool select) {

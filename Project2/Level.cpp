@@ -44,6 +44,7 @@ void Level::updateBackground() {
 
 void Level::update()
 {
+	std::cout << "rip\n";
 	// Update logic
 }
 
