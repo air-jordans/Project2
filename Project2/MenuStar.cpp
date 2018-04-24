@@ -1,41 +1,41 @@
-#include "Star.h"
+#include "MenuStar.h"
 
 
-Star::Star()
+MenuStar::MenuStar()
 {
 	rect.setFillColor(sf::Color::White);
 }
 
 
-Star::~Star()
+MenuStar::~MenuStar()
 {
 }
 
 
-void Star::setWindow(sf::RenderWindow* window) {
-	Star::window = window;
+void MenuStar::setWindow(sf::RenderWindow* window) {
+	MenuStar::window = window;
 }
 
-void Star::setPosition(int x, int y) {
+void MenuStar::setPosition(int x, int y) {
 	rect.setPosition(x, y);
 }
 
-void Star::setSize(float size) {
+void MenuStar::setSize(float size) {
 	rect.setSize(sf::Vector2f(size, size));
 }
 
-void Star::setDirection(float direction) {
-	Star::diretion = direction;
+void MenuStar::setDirection(float direction) {
+	MenuStar::diretion = direction;
 }
 
 // Calculate a (wrong) initial direction for the stars
-void Star::setInitialDirection() {
+void MenuStar::setInitialDirection() {
 	sf::Vector2u windowSize = window->getSize();
 	sf::Vector2f pos = rect.getPosition();
 	setDirection(-atan2(windowSize.x / 2 - pos.x, windowSize.y / 2 - pos.y));
 }
 
-void Star::move() {
+void MenuStar::move() {
 	// Update the position
 	sf::Vector2f pos = rect.getPosition();
 	rect.setPosition(pos.x + speed * cos(diretion), pos.y + speed * sin(diretion));
@@ -55,14 +55,14 @@ void Star::move() {
 }
 
 // Calculate sqauredDist from center and divide by some constant for speed
-float Star::calculateSpeed(float x, float y) {
+float MenuStar::calculateSpeed(float x, float y) {
 	sf::Vector2u windowSize = window->getSize();
 	float squaredDist = pow(windowSize.x / 2 - x, 2) + pow(windowSize.y / 2 - y, 2);
 	return squaredDist / 2000;
 }
 
 // render method for the star
-void Star::render() {
+void MenuStar::render() {
 	// make the stars in the middle smaller, otherwise it looks funky
 	// quite inefficient due to copying of the object, probably should keep original
 	// object and adjust it's size parameters

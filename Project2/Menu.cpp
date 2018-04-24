@@ -20,7 +20,7 @@ Menu::~Menu()
 
 void Menu::initStars() {
 	// create vector of Star's of size 200
-	menuStars = std::vector<Star>(200);
+	menuStars = std::vector<MenuStar>(200);
 
 	// Seed random number generation
 	srand(40);
