@@ -15,6 +15,7 @@ public:
 	void render();
 	bool isAlive();
 	void levelLoopInterface();
+	float speedX = 0;
 private:
 	sf::RectangleShape rect;
 	sf::CircleShape circle;
