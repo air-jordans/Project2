@@ -24,11 +24,12 @@ public:
 private:
 	Input* input;
 	sf::RenderWindow* window;
-	sf::Sprite splash;
 	MenuButton playButton;
 	MenuButton settingsButton;
 	MenuButton scoresButton;
 	MenuButton exitButton;
+	MenuButton menuInstructions;
+	MenuButton splash;
 	std::vector<Star> menuStars;
 	int currentSelected = 0;
 	const int play = 0;

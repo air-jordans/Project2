@@ -3,7 +3,8 @@
 
 Menu::Menu(sf::RenderWindow* hwnd, Input* inp)
 // Initialize the global buttons
-	: playButton(hwnd), settingsButton(hwnd), scoresButton(hwnd), exitButton(hwnd)
+	: playButton(hwnd), settingsButton(hwnd), scoresButton(hwnd), exitButton(hwnd),
+		menuInstructions(hwnd), splash(hwnd)
 {
 	window = hwnd;
 	input = inp;
@@ -31,11 +32,11 @@ void Menu::initStars() {
 	for (int i = 0; i < menuStars.size(); i++) {
 		// Pass each star a pointer to the window
 		menuStars[i].setWindow(window);
-		int x = ((double)rand() / RAND_MAX) * windowSize.x;
-		int y = ((double)rand() / RAND_MAX) * windowSize.y;
+		int x = (int) (((double)rand() / RAND_MAX) * windowSize.x);
+		int y = (int) (((double)rand() / RAND_MAX) * windowSize.y);
 		menuStars[i].setPosition(x, y);
 		menuStars[i].setInitialDirection();
-		menuStars[i].setSize(((double)rand() / RAND_MAX) * 2.5);
+		menuStars[i].setSize((float)(((double)rand() / RAND_MAX) * 2.5));
 	}
 }
 
@@ -52,8 +53,9 @@ void Menu::initButtons() {
 	if (!tex.loadFromFile("res/splash.png")) {
 		// error
 	}
-	splash.setTexture(tex);
-	splash.setPosition(sf::Vector2f(0, 0));
+
+	splash.setTexture("res/splash.png");
+	splash.setRect(sf::IntRect(0,0,600,100));
 
 	// Set relevant values to button variables
 	playButton.setTexture("res/playButton.png");
@@ -68,13 +70,16 @@ void Menu::initButtons() {
 
 	exitButton.setTexture("res/exitButton.png");
 	exitButton.setRect(sf::IntRect(width / 2 - buttonWidth / 2, 480, buttonWidth, buttonHeight));
+
+	menuInstructions.setTexture("res/menuInstructions.png");
+	menuInstructions.setRect(sf::IntRect(0, height - 40, 800, 50));
 }
 
 void Menu::setMusic(sf::String filename) {
 	if (!menuMusic.openFromFile(filename)) {
 		// error
 	}
-	menuMusic.setVolume(35);
+	menuMusic.setVolume(20);
 	menuMusic.setLoop(true);
 }
 
@@ -91,13 +96,13 @@ void Menu::render() {
 	window->clear(sf::Color::Black);
 
 	renderBackground();
-
-	window->draw(splash);
-
+	
+	splash.render();
 	playButton.render();
 	settingsButton.render();
 	scoresButton.render();
 	exitButton.render();
+	menuInstructions.render();
 
 	//Display 
 	window->display();

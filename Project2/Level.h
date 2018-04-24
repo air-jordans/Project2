@@ -3,6 +3,7 @@
 #include <string>
 #include <iostream>
 #include "Input.h"
+#include "Player.h"
 class Level {
 public:
 	Level();
@@ -18,8 +19,7 @@ private:
 	sf::RectangleShape rect;
 	sf::CircleShape circle;
 	float speed;
-	sf::RectangleShape player;
-	sf::Texture texture;
+	Player* player = 0;
 	sf::RectangleShape rect1;
 	sf::RectangleShape rect2;
 	sf::RectangleShape rect3;
