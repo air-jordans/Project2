@@ -28,7 +28,7 @@ void Level::updateBackground() {
 		stars[i].setPosition(newX, newY);
 	
 		if (stars[i].getX() < 0) {
-			stars[i].setPosition(window->getSize.x,((double) rand() / RAND_MAX) * window->getSize().y);
+			stars[i].setPosition(window->getSize().x,((double) rand() / RAND_MAX) * window->getSize().y);
 		}
 		else if (stars[i].getX() > window->getSize().x) {
 			stars[i].setPosition(0, ((double)rand() / RAND_MAX) * window->getSize().y);
