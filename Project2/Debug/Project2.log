@@ -1,29 +1,6 @@
 ﻿C:\Program Files (x86)\Microsoft Visual Studio\2017\Community\Common7\IDE\VC\VCTargets\Microsoft.CppBuild.targets(391,5): warning MSB8028: The intermediate directory (Debug\) contains files shared from another project (New Start.vcxproj).  This can lead to incorrect clean and rebuild behavior.
-  GameStar.cpp
-  Input.cpp
-  Level.cpp
-c:\users\paulm\source\repos\project2\project2\level.cpp(25): warning C4018: '<': signed/unsigned mismatch
-c:\users\paulm\source\repos\project2\project2\level.cpp(31): warning C4244: 'argument': conversion from 'double' to 'float', possible loss of data
-c:\users\paulm\source\repos\project2\project2\level.cpp(31): warning C4244: 'argument': conversion from 'unsigned int' to 'float', possible loss of data
-c:\users\paulm\source\repos\project2\project2\level.cpp(34): warning C4244: 'argument': conversion from 'double' to 'float', possible loss of data
-c:\users\paulm\source\repos\project2\project2\level.cpp(37): warning C4244: 'argument': conversion from 'unsigned int' to 'float', possible loss of data
-c:\users\paulm\source\repos\project2\project2\level.cpp(37): warning C4244: 'argument': conversion from 'double' to 'float', possible loss of data
-c:\users\paulm\source\repos\project2\project2\level.cpp(40): warning C4244: 'argument': conversion from 'double' to 'float', possible loss of data
-  main.cpp
-c:\users\paulm\source\repos\project2\project2\main.cpp(7): warning C4326: return type of 'main' should be 'int' instead of 'void'
-c:\users\paulm\source\repos\project2\project2\main.cpp(17): warning C4101: 'deltaTime': unreferenced local variable
-  Menu.cpp
-c:\users\paulm\source\repos\project2\project2\menu.cpp(32): warning C4018: '<': signed/unsigned mismatch
-c:\users\paulm\source\repos\project2\project2\menu.cpp(185): warning C4018: '<': signed/unsigned mismatch
   MenuButton.cpp
-c:\users\paulm\source\repos\project2\project2\menubutton.cpp(33): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
-c:\users\paulm\source\repos\project2\project2\menubutton.cpp(34): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
-c:\users\paulm\source\repos\project2\project2\menubutton.cpp(35): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
-  Player.cpp
-  MenuStar.cpp
-c:\users\paulm\source\repos\project2\project2\menustar.cpp(20): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
-c:\users\paulm\source\repos\project2\project2\menustar.cpp(45): warning C4244: '=': conversion from 'double' to 'float', possible loss of data
-c:\users\paulm\source\repos\project2\project2\menustar.cpp(53): warning C4244: 'argument': conversion from 'double' to 'float', possible loss of data
-  Generating Code...
-  LINK : C:\Users\paulm\source\repos\Project2\Debug\Project2.exe not found or not built by the last incremental link; performing full link
-  Project2.vcxproj -> C:\Users\paulm\source\repos\Project2\Debug\Project2.exe
+f:\programming\c++\project2\project2\menubutton.cpp(34): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
+f:\programming\c++\project2\project2\menubutton.cpp(35): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
+f:\programming\c++\project2\project2\menubutton.cpp(36): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
+  Project2.vcxproj -> F:\Programming\c++\Project2\Debug\Project2.exe
