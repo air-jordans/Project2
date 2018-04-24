@@ -5,7 +5,7 @@
 #include <iostream>
 #include "Input.h"
 #include "MenuButton.h"
-#include "Star.h"
+#include "MenuStar.h"
 class Menu
 {
 public:
@@ -30,7 +30,7 @@ private:
 	MenuButton exitButton;
 	MenuButton menuInstructions;
 	MenuButton splash;
-	std::vector<Star> menuStars;
+	std::vector<MenuStar> menuStars;
 	int currentSelected = 0;
 	const int play = 0;
 	const int options = 1;

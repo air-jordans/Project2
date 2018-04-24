@@ -10,6 +10,10 @@ Player::~Player()
 {
 }
 
+void Player::isAccelerating(bool accel) {
+	accelerating = accel;
+}
+
 void Player::setTexture(sf::String filename) {
 	tex = sf::Texture();
 
@@ -17,7 +21,7 @@ void Player::setTexture(sf::String filename) {
 		// error
 	}
 	sprite.setTexture(tex);
-	sprite.setPosition(sf::Vector2f(400 - 36/2, 450 - 54/2));
+	sprite.setPosition(sf::Vector2f(400 - 36/2, 450 - 60/2));
 	
 	std::cout << "texture address loaded:   " << "0x" << &tex << "\n";
 }
@@ -30,12 +34,28 @@ void Player::render(sf::RenderWindow* window) {
 	window->draw(sprite);
 }
 
+float Player::getX() {
+	return position.x;
+}
+
+float Player::getY() {
+	return position.y;
+}
+
+float Player::getXVelocity() {
+	return velocity.x;
+}
+
+float Player::getYVelocity() {
+	return velocity.y;
+}
+
 void Player::setPosition(float x, float y) {
-	Player::x = x;
-	Player::y = y;
+	position.x = x;
+	position.y = y;
 }
 
 void Player::move() {
-	x += vx;
-	y += vy;
+	position.x += velocity.x;
+	position.y += velocity.y;
 }

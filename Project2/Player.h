@@ -9,17 +9,22 @@ public:
 	~Player();
 	void render(sf::RenderWindow* window);
 	void move();
+	void isAccelerating(bool accel);
+	float getX();
+	float getY();
+	float getXVelocity();
+	float getYVelocity();
 	void setPosition(float x, float y);
 	void setTexture(sf::String filename);
 	void setTextureRect(sf::IntRect rect);
 private:
-	float x = 0;
-	float y = 0;
-	float vx = 0;
-	float vy = 0;
-	float ax = 0;
-	float ay = 0;
+	sf::Vector2f position;
+	sf::Vector2f velocity;
+	sf::Vector2f acceleration;
 	sf::Texture tex;
 	sf::Sprite sprite;
+	int frameCount = 0;
+	int currentSprite = 0;
+	bool accelerating = false;
 };
 

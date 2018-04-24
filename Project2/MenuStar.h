@@ -2,11 +2,11 @@
 #include <SFML/Graphics.hpp>
 #include <cmath>
 #include <math.h>
-class Star
+class MenuStar
 {
 public:
-	Star();
-	~Star();
+	MenuStar();
+	~MenuStar();
 
 	void setWindow(sf::RenderWindow* window);
 	void setPosition(int x, int y);
