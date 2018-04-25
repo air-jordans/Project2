@@ -14,6 +14,7 @@ public:
 	void render();
 	bool isAlive();
 	void levelLoopInterface();
+	float speedX = 0;
 private:
 	void update();
 	void handleInput();

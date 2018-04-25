@@ -1,5 +1,6 @@
 #include "Level.h"
 #include "Input.h"
+#include "Player.h"
 Level::Level() {
 
 }
@@ -62,24 +63,32 @@ void Level::update()
 {
 	player->move();
 	// Update logic
+	player->move();
+	updateBackground();
 }
 
 void Level::handleInput()
 {
 	// if space is pressed output to console
-	if (input->isKeyDown(sf::Keyboard::W))
+	if (input->isKeyDown(sf::Keyboard::Up))
 	{
-		input->setKeyUp(sf::Keyboard::W);
-		std::cout << "W was pressed\n";
-		player->isAccelerating(true);
+		player->setAcceleration(0.0,0.2);
 		player->setTextureRect(sf::IntRect(0, 60, 36, 60));
 
 	}
-	if (input->isKeyDown(sf::Keyboard::S))
+	if (input->isKeyDown(sf::Keyboard::Down))
 	{
-		input->setKeyUp(sf::Keyboard::S);
-		std::cout << "S was pressed\n";
-		player->isAccelerating(false);
+		player->setAcceleration(0.0, -0.2);
+		player->setTextureRect(sf::IntRect(0, 0, 36, 60));
+	}
+	if (input->isKeyDown(sf::Keyboard::Right))
+	{
+		player->setAcceleration(0.0, -0.2);
+		player->setTextureRect(sf::IntRect(0, 0, 36, 60));
+	}
+	if (input->isKeyDown(sf::Keyboard::Left))
+	{
+		player->setAcceleration(0.0, -0.2);
 		player->setTextureRect(sf::IntRect(0, 0, 36, 60));
 	}
 	if (input->isKeyDown(sf::Keyboard::X)) {
@@ -106,7 +115,7 @@ void Level::render()
 
 	drawBackground();
 	player->render(window);
-	
+
 	endDraw();
 }
 
