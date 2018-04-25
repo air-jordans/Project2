@@ -66,18 +66,16 @@ void Level::update()
 void Level::handleInput()
 {
 	// if space is pressed output to console
-	if (input->isKeyDown(sf::Keyboard::W))
+	if (input->isKeyDown(sf::Keyboard::Up))
 	{
-		input->setKeyUp(sf::Keyboard::W);
-		std::cout << "W was pressed\n";
-		player->isAccelerating(true);
+		input->setKeyUp(sf::Keyboard::Up);
+		player->
 		player->setTextureRect(sf::IntRect(0, 60, 36, 60));
 	}
-	if (input->isKeyDown(sf::Keyboard::S))
+	if (input->isKeyDown(sf::Keyboard::Down))
 	{
-		input->setKeyUp(sf::Keyboard::S);
-		std::cout << "S was pressed\n";
-		player->isAccelerating(false);
+		input->setKeyUp(sf::Keyboard::Down);
+
 		player->setTextureRect(sf::IntRect(0, 0, 36, 60));
 	}
 	if (input->isKeyDown(sf::Keyboard::X)) {
