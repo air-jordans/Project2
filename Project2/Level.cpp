@@ -19,8 +19,8 @@ Level::Level(sf::RenderWindow* hwnd, Input* in)
 	player->setTextureRect(sf::IntRect(0,0,36,60));
 
 	initStars();
+	initGameMenu();
 	setMusic("res/music/level0.wav");
-	levelMusic.play();
 	
 }
 Level::~Level()
@@ -113,7 +113,6 @@ void Level::handleInput()
 	if (input->isKeyDown(sf::Keyboard::Escape)) {
 		input->setKeyUp(sf::Keyboard::Escape);
 		paused = true;
-		initGameMenu();
 		levelMusic.pause();
 	}
 }

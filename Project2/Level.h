@@ -18,7 +18,7 @@ public:
 	float speedX = 0;
 private:
 	bool alive = true;
-	bool paused = false;
+	bool paused = true;
 	void update();
 	void handleInput();
 	void render();
