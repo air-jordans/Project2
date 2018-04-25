@@ -34,14 +34,14 @@ void Level::initStars() {
 		stars[i].setWindow(window);
 		stars[i].setPosition(((double) rand() / RAND_MAX) * window->getSize().x, ((double)rand() / RAND_MAX) * window->getSize().y);
 		stars[i].setVDiffPercent((double) rand() / RAND_MAX);
-		stars[i].setSize(((double)rand() / RAND_MAX) * 2);
+		stars[i].setSize(1+((double)rand() / RAND_MAX) * 1);
 	}
 
 }
 
 void Level::updateBackground() {
 	for (int i = 0; i < stars.size(); i++) {
-		float newX = stars[i].getX() + player->getXVelocity() * stars[i].getVDiffPercent();
+		float newX = stars[i].getX() - player->getXVelocity() * stars[i].getVDiffPercent();
 		float newY = stars[i].getY() + player->getYVelocity() * stars[i].getVDiffPercent();
 		stars[i].setPosition(newX, newY);
 	
@@ -73,19 +73,27 @@ void Level::handleInput()
 	// if space is pressed output to console
 	if (input->isKeyDown(sf::Keyboard::Up))
 	{
-		player->setYAcceleration(0.1);
+		player->setXAcceleration(sin(player->getRotation() / 180 * 3.14159265) * 0.1);
+		player->setYAcceleration(cos(player->getRotation() / 180 * 3.14159265) * 0.1);
+		std::cout << "x acceleration: " << player->getXAcceleration()*10 << "\n";
+		std::cout << "y acceleration: " << player->getYAcceleration()*10 << "\n";
 	}
-	if (input->isKeyDown(sf::Keyboard::Down))
+	else if (input->isKeyDown(sf::Keyboard::Down))
 	{
-		player->setYAcceleration(-0.1);
+		player->setXAcceleration(-sin(player->getRotation() / 180 * 3.14159265) * 0.1);
+		player->setYAcceleration(-cos(player->getRotation() / 180 * 3.14159265) * 0.1);
+	}
+	else {
+		player->setXAcceleration(0);
+		player->setYAcceleration(0);
 	}
 	if (input->isKeyDown(sf::Keyboard::Right))
 	{
-		player->setXAcceleration(0.1);
+		player->setRotation(player->getRotation() + 10);
 	}
-	if (input->isKeyDown(sf::Keyboard::Left))
+	else if (input->isKeyDown(sf::Keyboard::Left))
 	{
-		player->setXAcceleration(-0.1);
+		player->setRotation(player->getRotation() - 10);
 	}
 	if (input->isKeyDown(sf::Keyboard::X)) {
 		input->setKeyUp(sf::Keyboard::X);

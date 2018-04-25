@@ -3,6 +3,7 @@
 Player::Player()
 {
 	sprite.setPosition(400, 300);
+	sprite.setOrigin(36 / 2, 60 / 2);
 }
 
 
@@ -21,7 +22,7 @@ void Player::setTexture(sf::String filename) {
 		// error
 	}
 	sprite.setTexture(tex);
-	sprite.setPosition(sf::Vector2f(400 - 36/2, 450 - 60/2));
+	sprite.setPosition(sf::Vector2f(400, 450));
 	
 	std::cout << "texture address loaded:   " << "0x" << &tex << "\n";
 }
@@ -31,6 +32,8 @@ void Player::setTextureRect(sf::IntRect rect) {
 }
 
 void Player::render(sf::RenderWindow* window) {
+	sprite.setRotation(rotation);
+
 	window->draw(sprite);
 }
 
@@ -58,6 +61,10 @@ float Player::getYAcceleration() {
 	return acceleration.y;
 }
 
+float Player::getRotation() {
+	return rotation;
+}
+
 void Player::setXPosition(float x) {
 	position.x = x;
 }
@@ -80,6 +87,10 @@ void Player::setXAcceleration(float x) {
 
 void Player::setYAcceleration(float y) {
 	acceleration.y = y;
+}
+
+void Player::setRotation(float rot) {
+	rotation = rot;
 }
 
 void Player::move() {
