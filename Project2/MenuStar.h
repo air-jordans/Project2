@@ -17,9 +17,9 @@ public:
 	void render();
 private:
 	float calculateSpeed(float x, float y);
-	sf::RenderWindow* window;
-	sf::RectangleShape rect;
 	float speed = 0;
 	float diretion = 0;
+	sf::RenderWindow* window;
+	sf::RectangleShape rect;
 };
 

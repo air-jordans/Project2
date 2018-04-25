@@ -19,8 +19,6 @@ public:
 	int getMouseY();
 	void setMouseLeftDown(bool down);
 	bool isMouseLeftDown();
-
-	// Some functions missing. You will need to add these.
 private:
 	bool keys[256]{ false };
 	Mouse mouse;

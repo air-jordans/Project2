@@ -13,9 +13,9 @@ public:
 	bool isSelected();
 	void setSelected(bool select);
 private:
+	bool selected = false;
 	sf::RenderWindow* window;
 	sf::RectangleShape transparentRect;
 	sf::Texture tex;
 	sf::Sprite sprite;
-	bool selected = false;
 };

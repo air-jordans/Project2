@@ -12,24 +12,31 @@ public:
 	Level(sf::RenderWindow* hwnd, Input* in);
 	~Level();
 
-	void render();
+	
 	bool isAlive();
 	void levelLoopInterface();
 	float speedX = 0;
 private:
+	bool alive = true;
+	bool paused = false;
 	void update();
 	void handleInput();
+	void render();
+	void handleGameMenuInput();
+	void renderGameMenu();
 	void updateBackground();
 	void drawBackground();
 	void initStars();
+	void initGameMenu();
 	void setMusic(sf::String filename);
-	Player* player = 0;
-	sf::RenderWindow* window;
 	void beginDraw();
 	void endDraw();
-	bool alive = true;
-	bool paused = false;
+
+	Player* player = 0;
 	Input* input;
-	std::vector<GameStar> stars;
 	sf::Music levelMusic;
+	sf::RenderWindow* window;
+	sf::Texture gameMenuTex;
+	sf::Sprite gameMenu;
+	std::vector<GameStar> stars;
 };

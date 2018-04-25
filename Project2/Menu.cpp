@@ -158,18 +158,18 @@ void Menu::handleInput() {
 		}
 	}
 	if (input->isKeyDown(sf::Keyboard::Return)) {
-		if (currentSelected == exit) {
+		if (currentSelected == EXIT) {
 			// Exit the program
 			window->close();
 		}
-		else if (currentSelected == play) {
+		else if (currentSelected == PLAY) {
 			playButtonSelected = true;
 			// create level and run
 		}
-		else if (currentSelected == options) {
+		else if (currentSelected == OPTIONS) {
 			// go to options menu
 		}
-		else if (currentSelected == scores) {
+		else if (currentSelected == SCORES) {
 			// uhhhh, figure out what goes here
 		}
 	}
