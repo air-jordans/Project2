@@ -12,13 +12,11 @@ GameStar::~GameStar()
 {
 }
 
-
-
 void GameStar::setWindow(sf::RenderWindow* window) {
 	GameStar::window = window;
 }
 
-void GameStar::setPosition(float x, float y){
+void GameStar::setPosition(float x, float y) {
 	position.x = x;
 	position.y = y;
 	rect.setPosition(position);

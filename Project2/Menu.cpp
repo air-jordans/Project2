@@ -4,7 +4,7 @@
 Menu::Menu(sf::RenderWindow* hwnd, Input* inp)
 // Initialize the global buttons
 	: playButton(hwnd), settingsButton(hwnd), scoresButton(hwnd), exitButton(hwnd),
-		menuInstructions(hwnd), splash(hwnd)
+	menuInstructions(hwnd), splash(hwnd)
 {
 	window = hwnd;
 	input = inp;
@@ -32,8 +32,8 @@ void Menu::initStars() {
 	for (int i = 0; i < menuStars.size(); i++) {
 		// Pass each star a pointer to the window
 		menuStars[i].setWindow(window);
-		int x = (int) (((double)rand() / RAND_MAX) * windowSize.x);
-		int y = (int) (((double)rand() / RAND_MAX) * windowSize.y);
+		int x = (int)(((double)rand() / RAND_MAX) * windowSize.x);
+		int y = (int)(((double)rand() / RAND_MAX) * windowSize.y);
 		menuStars[i].setPosition(x, y);
 		menuStars[i].setInitialDirection();
 		menuStars[i].setSize((float)(((double)rand() / RAND_MAX) * 2.5));
@@ -55,7 +55,7 @@ void Menu::initButtons() {
 	}
 
 	splash.setTexture("res/splash.png");
-	splash.setRect(sf::IntRect(0,0,600,100));
+	splash.setRect(sf::IntRect(0, 0, 600, 100));
 
 	// Set relevant values to button variables
 	playButton.setTexture("res/playButton.png");
@@ -96,7 +96,7 @@ void Menu::render() {
 	window->clear(sf::Color::Black);
 
 	renderBackground();
-	
+
 	splash.render();
 	playButton.render();
 	settingsButton.render();

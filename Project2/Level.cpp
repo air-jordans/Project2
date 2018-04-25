@@ -13,7 +13,8 @@ Level::Level(sf::RenderWindow* hwnd, Input* in)
 
 	delete player;
 	player = new Player();
-	player->setPosition(0, 0);
+	player->setXPosition(0);
+	player->setYPosition(0);
 	player->setTexture("res/player/player.png");
 	player->setTextureRect(sf::IntRect(0,0,36,60));
 
@@ -33,14 +34,14 @@ void Level::initStars() {
 		stars[i].setWindow(window);
 		stars[i].setPosition(((double) rand() / RAND_MAX) * window->getSize().x, ((double)rand() / RAND_MAX) * window->getSize().y);
 		stars[i].setVDiffPercent((double) rand() / RAND_MAX);
-		stars[i].setSize(((double)rand() / RAND_MAX) * 2);
+		stars[i].setSize(1+((double)rand() / RAND_MAX) * 1);
 	}
 
 }
 
 void Level::updateBackground() {
 	for (int i = 0; i < stars.size(); i++) {
-		float newX = stars[i].getX() + player->getXVelocity() * stars[i].getVDiffPercent();
+		float newX = stars[i].getX() - player->getXVelocity() * stars[i].getVDiffPercent();
 		float newY = stars[i].getY() + player->getYVelocity() * stars[i].getVDiffPercent();
 		stars[i].setPosition(newX, newY);
 	
@@ -61,6 +62,7 @@ void Level::updateBackground() {
 
 void Level::update()
 {
+	player->move();
 	// Update logic
 	player->move();
 	updateBackground();
@@ -71,35 +73,27 @@ void Level::handleInput()
 	// if space is pressed output to console
 	if (input->isKeyDown(sf::Keyboard::Up))
 	{
-		player->setAcceleration(0.0,0.1);
+		player->setXAcceleration(sin(player->getRotation() / 180 * 3.14159265) * 0.1);
+		player->setYAcceleration(cos(player->getRotation() / 180 * 3.14159265) * 0.1);
+		std::cout << "x acceleration: " << player->getXAcceleration()*10 << "\n";
+		std::cout << "y acceleration: " << player->getYAcceleration()*10 << "\n";
 	}
-	if (input->isKeyDown(sf::Keyboard::Down))
+	else if (input->isKeyDown(sf::Keyboard::Down))
 	{
-		player->setAcceleration(0.0, -0.1);
+		player->setXAcceleration(-sin(player->getRotation() / 180 * 3.14159265) * 0.1);
+		player->setYAcceleration(-cos(player->getRotation() / 180 * 3.14159265) * 0.1);
 	}
-	if (input->isKeyDown(sf::Keyboard::Right))
-	{
-		player->setAcceleration(-0.1, 0.0);
-	}
-	if (input->isKeyDown(sf::Keyboard::Left))
-	{
-		player->setAcceleration(0.1, -0.0);
-	}
-	if (input->isKeyDown(sf::Keyboard::Up))
-	{
-		player->setAcceleration(0.0, 0.0);
-	}
-	if (input->isKeyDown(sf::Keyboard::Down))
-	{
-		player->setAcceleration(0.0, 0.0);
+	else {
+		player->setXAcceleration(0);
+		player->setYAcceleration(0);
 	}
 	if (input->isKeyDown(sf::Keyboard::Right))
 	{
-		player->setAcceleration(0.0, 0.0);
+		player->setRotation(player->getRotation() + 10);
 	}
-	if (input->isKeyDown(sf::Keyboard::Left))
+	else if (input->isKeyDown(sf::Keyboard::Left))
 	{
-		player->setAcceleration(0.1, 0.0);
+		player->setRotation(player->getRotation() - 10);
 	}
 	if (input->isKeyDown(sf::Keyboard::X)) {
 		input->setKeyUp(sf::Keyboard::X);
