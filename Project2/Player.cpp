@@ -62,7 +62,7 @@ void Player::setXPosition(float x) {
 	position.x = x;
 }
 
-void Player::setYposition(float y) {
+void Player::setYPosition(float y) {
 	position.y = y;
 }
 

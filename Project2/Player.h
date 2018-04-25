@@ -18,7 +18,7 @@ public:
 	void setXVelocity(float x);
 	void setYVelocity(float y);
 	void setXPosition(float x);
-	void setYposition(float y);
+	void setYPosition(float y);
 	void setXAcceleration(float x);
 	void setYAcceleration(float y);
 	void setTexture(sf::String filename);

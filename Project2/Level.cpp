@@ -13,7 +13,8 @@ Level::Level(sf::RenderWindow* hwnd, Input* in)
 
 	delete player;
 	player = new Player();
-	player->setPosition(0, 0);
+	player->setXPosition(0);
+	player->setYPosition(0);
 	player->setTexture("res/player/player.png");
 	player->setTextureRect(sf::IntRect(0,0,36,60));
 
@@ -72,19 +73,19 @@ void Level::handleInput()
 	// if space is pressed output to console
 	if (input->isKeyDown(sf::Keyboard::Up))
 	{
-		player->setAcceleration(0.0,0.1);
+		player->setYAcceleration(0.1);
 	}
 	if (input->isKeyDown(sf::Keyboard::Down))
 	{
-		player->setAcceleration(0.0, -0.1);
+		player->setYAcceleration(-0.1);
 	}
 	if (input->isKeyDown(sf::Keyboard::Right))
 	{
-		player->setAcceleration(0.1, 0);
+		player->setXAcceleration(0.1);
 	}
 	if (input->isKeyDown(sf::Keyboard::Left))
 	{
-		player->setAcceleration(-0.1, 0);
+		player->setXAcceleration(-0.1);
 	}
 	if (input->isKeyDown(sf::Keyboard::X)) {
 		input->setKeyUp(sf::Keyboard::X);
