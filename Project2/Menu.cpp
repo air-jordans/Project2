@@ -185,7 +185,6 @@ void Menu::renderBackground() {
 	for (int i = 0; i < menuStars.size(); i++) {
 		menuStars[i].render();
 		menuStars[i].move();
-		//std::cout << i;
 	}
 }
 

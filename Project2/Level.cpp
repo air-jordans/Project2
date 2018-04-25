@@ -6,19 +6,35 @@ Level::Level() {
 
 Level::Level(sf::RenderWindow* hwnd, Input* in)
 {
+	input = in;
+	window = hwnd;
+
+
 	delete player;
 	player = new Player();
 	player->setPosition(0, 0);
 	player->setTexture("res/player/player.png");
 	player->setTextureRect(sf::IntRect(0,0,36,60));
 
-	stars = std::vector<GameStar>(200);
+	initStars();
 	
-	input = in;
-	window = hwnd;
+	
 }
 Level::~Level()
 {
+}
+
+
+void Level::initStars() {
+	stars = std::vector<GameStar>(250);
+
+	for (int i = 0; i < stars.size(); i++) {
+		stars[i].setWindow(window);
+		stars[i].setPosition(((double) rand() / RAND_MAX) * window->getSize().x, ((double)rand() / RAND_MAX) * window->getSize().y);
+		stars[i].setVDiffPercent((double) rand() / RAND_MAX);
+		stars[i].setSize(((double)rand() / RAND_MAX) * 2);
+	}
+
 }
 
 void Level::updateBackground() {
@@ -44,7 +60,6 @@ void Level::updateBackground() {
 
 void Level::update()
 {
-	std::cout << "rip\n";
 	// Update logic
 }
 
@@ -94,8 +109,8 @@ void Level::render()
 }
 
 void Level::drawBackground() {
-	for (GameStar star : stars) {
-
+	for (int i = 0; i < stars.size(); i++) {
+		stars[i].render();
 	}
 }
 

@@ -9,7 +9,6 @@ public:
 	void setPosition(float x, float y);
 	void setVDiffPercent(float vdiff);
 	void setSize(float size);
-	void move();
 	void render();
 	float getX();
 	float getY();

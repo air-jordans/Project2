@@ -1,9 +1,11 @@
 #include "GameStar.h"
-
+#include <iostream>
 
 
 GameStar::GameStar()
 {
+	rect.setFillColor(sf::Color::White);
+	//std::cout << "init address of rect: " << &rect << "\n";
 }
 
 
@@ -43,12 +45,8 @@ void GameStar::setSize(float size) {
 	rect.setSize(sf::Vector2f(size, size));
 }
 
-
-void GameStar::move() {
-
-}
-
 // render method for the star
 void GameStar::render() {
+	//std::cout << "draw address of rect: " << &rect << "\n";
 	window->draw(rect);
 }

@@ -18,7 +18,7 @@ void main()
 
 	bool levelExists = false;
 
-	Level level;
+	Level* level = 0;
 
 	// Game loop
 	while (window.isOpen())
@@ -51,10 +51,10 @@ void main()
 		}
 		if (menu.playButtonSelected) {
 			if (levelExists) {
-				if (level.isAlive()) {
-					level.levelLoopInterface();
+				if (level->isAlive()) {
+					level->levelLoopInterface();
 				}
-				else if (!level.isAlive()) {
+				else if (!level->isAlive()) {
 					// Get level score/data etc.
 					levelExists = false;
 					menu.playButtonSelected = false;
@@ -63,7 +63,7 @@ void main()
 			}
 			else if (!levelExists){
 				menu.stopMusic();
-				level = Level(&window, &input);
+				level = new Level(&window, &input);
 				levelExists = true;
 				// Create level
 			}
