@@ -74,7 +74,7 @@ void Menu::setMusic(sf::String filename) {
 	if (!menuMusic.openFromFile(filename)) {
 		// error
 	}
-	menuMusic.setVolume(20);
+	menuMusic.setVolume(10);
 	menuMusic.setLoop(true);
 }
 
