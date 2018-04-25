@@ -49,11 +49,6 @@ void Menu::initButtons() {
 	int height = size.y;
 
 	// Intitialize the splash art
-	sf::Texture tex;
-	if (!tex.loadFromFile("res/splash.png")) {
-		// error
-	}
-
 	splash.setTexture("res/splash.png");
 	splash.setRect(sf::IntRect(0, 0, 600, 100));
 

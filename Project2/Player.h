@@ -31,6 +31,7 @@ private:
 	sf::Vector2f acceleration;
 	sf::Texture tex;
 	sf::Sprite sprite;
+	
 	int frameCount = 0;
 	int currentSprite = 0;
 	bool accelerating = false;

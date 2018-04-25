@@ -19,13 +19,21 @@ Level::Level(sf::RenderWindow* hwnd, Input* in)
 	player->setTextureRect(sf::IntRect(0,0,36,60));
 
 	initStars();
-	
+	setMusic("res/music/level0.wav");
+	levelMusic.play();
 	
 }
 Level::~Level()
 {
 }
 
+void Level::setMusic(sf::String filename) {
+	if (!levelMusic.openFromFile(filename)) {
+		// error
+	}
+	levelMusic.setVolume(20);
+	levelMusic.setLoop(true);
+}
 
 void Level::initStars() {
 	stars = std::vector<GameStar>(250);
@@ -89,16 +97,17 @@ void Level::handleInput()
 	}
 	if (input->isKeyDown(sf::Keyboard::Right))
 	{
-		player->setRotation(player->getRotation() + 10);
+		player->setRotation(player->getRotation() + 4);
 	}
 	else if (input->isKeyDown(sf::Keyboard::Left))
 	{
-		player->setRotation(player->getRotation() - 10);
+		player->setRotation(player->getRotation() - 4);
 	}
 	if (input->isKeyDown(sf::Keyboard::X)) {
 		input->setKeyUp(sf::Keyboard::X);
 		std::cout << "X was pressed\n";
 		alive = false;
+		levelMusic.stop();
 	}
 }
 
