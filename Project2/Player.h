@@ -15,9 +15,12 @@ public:
 	float getYVelocity();
 	float getXAcceleration();
 	float getYAcceleration();
-	void setVelocity(float x, float y);
-	void setPosition(float x, float y);
-	void setAcceleration(float x, float y);
+	void setXVelocity(float x);
+	void setYVelocity(float y);
+	void setXPosition(float x);
+	void setYposition(float y);
+	void setXAcceleration(float x);
+	void setYAcceleration(float y);
 	void setTexture(sf::String filename);
 	void setTextureRect(sf::IntRect rect);
 private:

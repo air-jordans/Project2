@@ -72,24 +72,19 @@ void Level::handleInput()
 	// if space is pressed output to console
 	if (input->isKeyDown(sf::Keyboard::Up))
 	{
-		player->setAcceleration(0.0,0.2);
-		player->setTextureRect(sf::IntRect(0, 60, 36, 60));
-
+		player->setAcceleration(0.0,0.1);
 	}
 	if (input->isKeyDown(sf::Keyboard::Down))
 	{
-		player->setAcceleration(0.0, -0.2);
-		player->setTextureRect(sf::IntRect(0, 0, 36, 60));
+		player->setAcceleration(0.0, -0.1);
 	}
 	if (input->isKeyDown(sf::Keyboard::Right))
 	{
-		player->setAcceleration(0.0, -0.2);
-		player->setTextureRect(sf::IntRect(0, 0, 36, 60));
+		player->setAcceleration(0.1, 0);
 	}
 	if (input->isKeyDown(sf::Keyboard::Left))
 	{
-		player->setAcceleration(0.0, -0.2);
-		player->setTextureRect(sf::IntRect(0, 0, 36, 60));
+		player->setAcceleration(-0.1, 0);
 	}
 	if (input->isKeyDown(sf::Keyboard::X)) {
 		input->setKeyUp(sf::Keyboard::X);

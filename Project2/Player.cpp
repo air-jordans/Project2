@@ -58,18 +58,27 @@ float Player::getYAcceleration() {
 	return acceleration.y;
 }
 
-void Player::setPosition(float x, float y) {
+void Player::setXPosition(float x) {
 	position.x = x;
+}
+
+void Player::setYposition(float y) {
 	position.y = y;
 }
 
-void Player::setVelocity(float x, float y) {
+void Player::setXVelocity(float x) {
 	velocity.x = x;
+}
+
+void Player::setYVelocity(float y) {
 	velocity.y = y;
 }
 
-void Player::setAcceleration(float x, float y) {
+void Player::setXAcceleration(float x) {
 	acceleration.x = x;
+}
+
+void Player::setYAcceleration(float y) {
 	acceleration.y = y;
 }
 
