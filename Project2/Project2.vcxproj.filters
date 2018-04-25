@@ -39,6 +39,9 @@
     <ClCompile Include="GameStar.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="CompletionBar.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Level.h">
@@ -60,6 +63,9 @@
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="GameStar.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="CompletionBar.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>
