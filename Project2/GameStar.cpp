@@ -1,9 +1,10 @@
 #include "GameStar.h"
-
+#include <iostream>
 
 
 GameStar::GameStar()
 {
+	rect.setFillColor(sf::Color::White);
 }
 
 
@@ -41,11 +42,6 @@ void GameStar::setVDiffPercent(float vdiff) {
 
 void GameStar::setSize(float size) {
 	rect.setSize(sf::Vector2f(size, size));
-}
-
-
-void GameStar::move() {
-
 }
 
 // render method for the star

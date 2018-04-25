@@ -63,17 +63,5 @@ float MenuStar::calculateSpeed(float x, float y) {
 
 // render method for the star
 void MenuStar::render() {
-	// make the stars in the middle smaller, otherwise it looks funky
-	// quite inefficient due to copying of the object, probably should keep original
-	// object and adjust it's size parameters
-	/*if (speed < 0.8) {
-		sf::Vector2f oldSize = rect.getSize();
-		float size = 1 +((double)rand() / RAND_MAX)*1.5;
-		rect.setSize(sf::Vector2f(size,size));
-		window->draw(rect);
-		rect.setSize(oldSize);
-	}
-	else {*/
-		window->draw(rect);
-	//}
+	window->draw(rect);
 }

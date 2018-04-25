@@ -14,6 +14,7 @@ public:
 	float getY();
 	float getXVelocity();
 	float getYVelocity();
+	void setVelocity(float x, float y);
 	void setPosition(float x, float y);
 	void setTexture(sf::String filename);
 	void setTextureRect(sf::IntRect rect);

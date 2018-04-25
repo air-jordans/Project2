@@ -20,6 +20,7 @@ private:
 	void handleInput();
 	void updateBackground();
 	void drawBackground();
+	void initStars();
 	Player* player = 0;
 	sf::RenderWindow* window;
 	void beginDraw();
