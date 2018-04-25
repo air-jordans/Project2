@@ -14,7 +14,7 @@ Level::Level(sf::RenderWindow* hwnd, Input* in)
 	player = new Player();
 	player->setXPosition(0);
 	player->setYPosition(0);
-	player->setTexture("res/player/player.png");
+	player->setTexture("res/player/final.png");
 	player->setTextureRect(sf::IntRect(0,0,36,60));
 
 	initStars();
@@ -22,9 +22,8 @@ Level::Level(sf::RenderWindow* hwnd, Input* in)
 	initCompletionBar();
 	initTimerText();
 	setMusic("res/music/level0.wav");
-	
-
 }
+
 Level::~Level()
 {
 }
@@ -81,6 +80,13 @@ void Level::initTimerText() {
 	timerDisplay.setFont(arial);
 }
 
+bool Level::checkFinish() {
+	if (player->getY() > finishLine) {
+		return true;
+	}
+	return false;
+}
+
 void Level::updateBackground() {
 	for (int i = 0; i < stars.size(); i++) {
 		float newX = stars[i].getX() - player->getXVelocity() * stars[i].getVDiffPercent();
@@ -102,9 +108,16 @@ void Level::updateBackground() {
 	}
 }
 
+void Level::exitLevel() {
+	paused = true;
+}
+
 void Level::update()
 {
 	player->move();
+	if (checkFinish()) {
+		exitLevel();
+	}
 	updateBackground();
 	cb.setPercentage(player->getY() / (float)finishLine);
 }
@@ -116,15 +129,18 @@ void Level::handleInput()
 	{
 		player->setXAcceleration(sin(player->getRotation() / 180 * 3.14159265) * 0.2);
 		player->setYAcceleration(cos(player->getRotation() / 180 * 3.14159265) * 0.2);
+		player->isAccelerating(true);
 	}
 	else if (input->isKeyDown(sf::Keyboard::Down))
 	{
 		player->setXAcceleration(-sin(player->getRotation() / 180 * 3.14159265) * 0.2);
 		player->setYAcceleration(-cos(player->getRotation() / 180 * 3.14159265) * 0.2);
+		player->isAccelerating(true);
 	}
 	else {
 		player->setXAcceleration(0);
 		player->setYAcceleration(0);
+		player->isAccelerating(false);
 	}
 	if (input->isKeyDown(sf::Keyboard::Right))
 	{
