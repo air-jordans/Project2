@@ -4,7 +4,6 @@
 class Player
 {
 public:
-	Player(sf::RenderWindow* hwnd);
 	Player();
 	~Player();
 	void render(sf::RenderWindow* window);
@@ -14,6 +13,8 @@ public:
 	float getY();
 	float getXVelocity();
 	float getYVelocity();
+	float getXAcceleration();
+	float getYAcceleration();
 	void setVelocity(float x, float y);
 	void setPosition(float x, float y);
 	void setAcceleration(float x, float y);

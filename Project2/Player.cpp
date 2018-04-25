@@ -50,6 +50,14 @@ float Player::getYVelocity() {
 	return velocity.y;
 }
 
+float Player::getXAcceleration() {
+	return acceleration.x;
+}
+
+float Player::getYAcceleration() {
+	return acceleration.y;
+}
+
 void Player::setPosition(float x, float y) {
 	position.x = x;
 	position.y = y;
