@@ -19,13 +19,21 @@ Level::Level(sf::RenderWindow* hwnd, Input* in)
 	player->setTextureRect(sf::IntRect(0,0,36,60));
 
 	initStars();
-	
+	setMusic("res/music/level0.wav");
+	levelMusic.play();
 	
 }
 Level::~Level()
 {
 }
 
+void Level::setMusic(sf::String filename) {
+	if (!levelMusic.openFromFile(filename)) {
+		// error
+	}
+	levelMusic.setVolume(20);
+	levelMusic.setLoop(true);
+}
 
 void Level::initStars() {
 	stars = std::vector<GameStar>(250);
@@ -73,8 +81,8 @@ void Level::handleInput()
 	// if space is pressed output to console
 	if (input->isKeyDown(sf::Keyboard::Up))
 	{
-		player->setXAcceleration(sin(player->getRotation() / 180 * 3.14159265) * 0.1);
-		player->setYAcceleration(cos(player->getRotation() / 180 * 3.14159265) * 0.1);
+		player->setXAcceleration(sin(player->getRotation() / 180 * 3.14159265) * 10);
+		player->setYAcceleration(cos(player->getRotation() / 180 * 3.14159265) * 10);
 		std::cout << "x acceleration: " << player->getXAcceleration()*10 << "\n";
 		std::cout << "y acceleration: " << player->getYAcceleration()*10 << "\n";
 	}
@@ -99,6 +107,7 @@ void Level::handleInput()
 		input->setKeyUp(sf::Keyboard::X);
 		std::cout << "X was pressed\n";
 		alive = false;
+		levelMusic.stop();
 	}
 }
 

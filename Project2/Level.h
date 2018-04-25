@@ -1,5 +1,6 @@
 #pragma once
 #include <SFML/Graphics.hpp>
+#include <SFML/Audio.hpp>
 #include <string>
 #include <iostream>
 #include "Input.h"
@@ -21,6 +22,7 @@ private:
 	void updateBackground();
 	void drawBackground();
 	void initStars();
+	void setMusic(sf::String filename);
 	Player* player = 0;
 	sf::RenderWindow* window;
 	void beginDraw();
@@ -28,4 +30,5 @@ private:
 	bool alive = true;
 	Input* input;
 	std::vector<GameStar> stars;
+	sf::Music levelMusic;
 };
