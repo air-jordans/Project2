@@ -22,20 +22,20 @@ public:
 	void stopMusic();
 	bool playButtonSelected = false;
 private:
+	int currentSelected = 0;
+	const int PLAY = 0;
+	const int OPTIONS = 1;
+	const int SCORES = 2;
+	const int EXIT = 3;
 	Input* input;
-	sf::RenderWindow* window;
 	MenuButton playButton;
 	MenuButton settingsButton;
 	MenuButton scoresButton;
 	MenuButton exitButton;
 	MenuButton menuInstructions;
 	MenuButton splash;
-	std::vector<MenuStar> menuStars;
-	int currentSelected = 0;
-	const int play = 0;
-	const int options = 1;
-	const int scores = 2;
-	const int exit = 3;
+	sf::RenderWindow* window;
 	sf::Music menuMusic;
+	std::vector<MenuStar> menuStars;	
 };
 

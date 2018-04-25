@@ -19,8 +19,8 @@ Level::Level(sf::RenderWindow* hwnd, Input* in)
 	player->setTextureRect(sf::IntRect(0,0,36,60));
 
 	initStars();
+	initGameMenu();
 	setMusic("res/music/level0.wav");
-	levelMusic.play();
 	
 }
 Level::~Level()
@@ -33,6 +33,15 @@ void Level::setMusic(sf::String filename) {
 	}
 	levelMusic.setVolume(20);
 	levelMusic.setLoop(true);
+}
+
+void Level::initGameMenu() {
+	gameMenuTex = sf::Texture();
+	if (!gameMenuTex.loadFromFile("res/pauseSplash.png")) {
+		// error
+	}
+	gameMenu.setTexture(gameMenuTex);
+	gameMenu.setPosition(sf::Vector2f(100,100));
 }
 
 void Level::initStars() {
@@ -53,17 +62,17 @@ void Level::updateBackground() {
 		float newY = stars[i].getY() + player->getYVelocity() * stars[i].getVDiffPercent();
 		stars[i].setPosition(newX, newY);
 	
-		if (stars[i].getX() < 0) {
-			stars[i].setPosition(window->getSize().x,((double) rand() / RAND_MAX) * window->getSize().y);
+		if (stars[i].getX() < -5) {
+			stars[i].setPosition(window->getSize().x + 5,((double) rand() / RAND_MAX) * window->getSize().y);
 		}
-		else if (stars[i].getX() > window->getSize().x) {
-			stars[i].setPosition(0, ((double)rand() / RAND_MAX) * window->getSize().y);
+		else if (stars[i].getX() > window->getSize().x+5) {
+			stars[i].setPosition(-1, ((double)rand() / RAND_MAX) * window->getSize().y);
 		}
-		else if (stars[i].getY() < 0) {
-			stars[i].setPosition(((double)rand() / RAND_MAX) * window->getSize().x, window->getSize().y);
+		else if (stars[i].getY() < -5) {
+			stars[i].setPosition(((double)rand() / RAND_MAX) * window->getSize().x, window->getSize().y+5);
 		}
-		else if (stars[i].getY() > window->getSize().y) {
-			stars[i].setPosition(((double)rand() / RAND_MAX) * window->getSize().x, 0);
+		else if (stars[i].getY() > window->getSize().y + 5) {
+			stars[i].setPosition(((double)rand() / RAND_MAX) * window->getSize().x, -5);
 		}
 	}
 }
@@ -83,8 +92,6 @@ void Level::handleInput()
 	{
 		player->setXAcceleration(sin(player->getRotation() / 180 * 3.14159265) * 0.1);
 		player->setYAcceleration(cos(player->getRotation() / 180 * 3.14159265) * 0.1);
-		std::cout << "x acceleration: " << player->getXAcceleration()*10 << "\n";
-		std::cout << "y acceleration: " << player->getYAcceleration()*10 << "\n";
 	}
 	else if (input->isKeyDown(sf::Keyboard::Down))
 	{
@@ -103,11 +110,10 @@ void Level::handleInput()
 	{
 		player->setRotation(player->getRotation() - 4);
 	}
-	if (input->isKeyDown(sf::Keyboard::X)) {
-		input->setKeyUp(sf::Keyboard::X);
-		std::cout << "X was pressed\n";
-		alive = false;
-		levelMusic.stop();
+	if (input->isKeyDown(sf::Keyboard::Escape)) {
+		input->setKeyUp(sf::Keyboard::Escape);
+		paused = true;
+		levelMusic.pause();
 	}
 }
 
@@ -117,19 +123,39 @@ bool Level::isAlive() {
 }
 
 void Level::levelLoopInterface() {
-	update();
-	handleInput();
+	if (!paused) {
+		update();
+		handleInput();
+	}
+	beginDraw();
 	render();
+	if (paused) {
+		handleGameMenuInput();
+		renderGameMenu();
+	}
+	endDraw();
+}
+
+void Level::handleGameMenuInput() {
+	if (input->isKeyDown(sf::Keyboard::Return)) {
+		input->setKeyUp(sf::Keyboard::Return);
+		paused = false;
+		levelMusic.play();
+	}
+	if (input->isKeyDown(sf::Keyboard::X)) {
+		input->setKeyUp(sf::Keyboard::X);
+		alive = false;
+	}
+}
+
+void Level::renderGameMenu() {
+	window->draw(gameMenu);
 }
 
 void Level::render()
 {
-	beginDraw();
-
 	drawBackground();
 	player->render(window);
-
-	endDraw();
 }
 
 void Level::drawBackground() {

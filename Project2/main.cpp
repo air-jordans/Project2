@@ -56,6 +56,7 @@ void main()
 				}
 				else if (!level->isAlive()) {
 					// Get level score/data etc.
+					delete level; // Clean up level
 					levelExists = false;
 					menu.playButtonSelected = false;
 					menu.playMusic();
