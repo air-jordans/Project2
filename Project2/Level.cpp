@@ -60,6 +60,7 @@ void Level::updateBackground() {
 
 void Level::update()
 {
+	player->move();
 	// Update logic
 }
 
@@ -72,6 +73,7 @@ void Level::handleInput()
 		std::cout << "W was pressed\n";
 		player->isAccelerating(true);
 		player->setTextureRect(sf::IntRect(0, 60, 36, 60));
+
 	}
 	if (input->isKeyDown(sf::Keyboard::S))
 	{
