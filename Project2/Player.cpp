@@ -55,6 +55,11 @@ void Player::setPosition(float x, float y) {
 	position.y = y;
 }
 
+void Player::setVelocity(float x, float y) {
+	velocity.x = x;
+	velocity.y = y;
+}
+
 void Player::move() {
 	position.x += velocity.x;
 	position.y += velocity.y;
