@@ -22,6 +22,7 @@ private:
 	long gameTime = 0;
 	bool alive = true;
 	bool paused = true;
+	bool checkFinish();
 	void update();
 	void handleInput();
 	void render();
@@ -36,6 +37,7 @@ private:
 	void initTimerText();
 	void setFinish(int fin);
 	void setMusic(sf::String filename);
+	void exitLevel();
 	void beginDraw();
 	void endDraw();
 

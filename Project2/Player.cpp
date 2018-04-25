@@ -24,7 +24,6 @@ void Player::setTexture(sf::String filename) {
 	sprite.setTexture(tex);
 	sprite.setPosition(sf::Vector2f(400, 450));
 	
-	std::cout << "texture address loaded:   " << "0x" << &tex << "\n";
 }
 
 void Player::setTextureRect(sf::IntRect rect) {
@@ -33,6 +32,25 @@ void Player::setTextureRect(sf::IntRect rect) {
 
 void Player::render(sf::RenderWindow* window) {
 	sprite.setRotation(rotation);
+
+	if (accelerating) {
+		if (frameCount > 1) {
+			std::cout << currentSprite;
+			sprite.setTextureRect(sf::IntRect(0, currentSprite * 60, 36, 60));
+			currentSprite+=1;
+			if (currentSprite > 20) {
+				currentSprite = 1;
+			}
+			frameCount = 0;
+		}
+		else {
+			frameCount++;
+		}
+	}
+	else {
+		sprite.setTextureRect(sf::IntRect(0,0,36,60));
+		frameCount = 21;
+	}
 
 	window->draw(sprite);
 }

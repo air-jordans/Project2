@@ -33,7 +33,7 @@ private:
 	sf::Sprite sprite;
 	
 	int frameCount = 0;
-	int currentSprite = 0;
+	int currentSprite = 1;
 	bool accelerating = false;
 	float rotation = 0;
 };
