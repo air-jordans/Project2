@@ -28,6 +28,7 @@ private:
 	void beginDraw();
 	void endDraw();
 	bool alive = true;
+	bool paused = false;
 	Input* input;
 	std::vector<GameStar> stars;
 	sf::Music levelMusic;

@@ -81,8 +81,8 @@ void Level::handleInput()
 	// if space is pressed output to console
 	if (input->isKeyDown(sf::Keyboard::Up))
 	{
-		player->setXAcceleration(sin(player->getRotation() / 180 * 3.14159265) * 10);
-		player->setYAcceleration(cos(player->getRotation() / 180 * 3.14159265) * 10);
+		player->setXAcceleration(sin(player->getRotation() / 180 * 3.14159265) * 0.1);
+		player->setYAcceleration(cos(player->getRotation() / 180 * 3.14159265) * 0.1);
 		std::cout << "x acceleration: " << player->getXAcceleration()*10 << "\n";
 		std::cout << "y acceleration: " << player->getYAcceleration()*10 << "\n";
 	}
@@ -97,11 +97,11 @@ void Level::handleInput()
 	}
 	if (input->isKeyDown(sf::Keyboard::Right))
 	{
-		player->setRotation(player->getRotation() + 10);
+		player->setRotation(player->getRotation() + 4);
 	}
 	else if (input->isKeyDown(sf::Keyboard::Left))
 	{
-		player->setRotation(player->getRotation() - 10);
+		player->setRotation(player->getRotation() - 4);
 	}
 	if (input->isKeyDown(sf::Keyboard::X)) {
 		input->setKeyUp(sf::Keyboard::X);
