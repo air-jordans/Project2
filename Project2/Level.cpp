@@ -1,6 +1,7 @@
 #include "Level.h"
 #include "Input.h"
 #include "Player.h"
+#include "Asteroid.h"
 Level::Level() {
 
 }
@@ -124,13 +125,14 @@ void Level::update()
 
 void Level::handleInput()
 {
-	// if space is pressed output to console
+	// Accelerates the player forward if the up arrow key is pressed
 	if (input->isKeyDown(sf::Keyboard::Up))
 	{
 		player->setXAcceleration(sin(player->getRotation() / 180 * 3.14159265) * 0.2);
 		player->setYAcceleration(cos(player->getRotation() / 180 * 3.14159265) * 0.2);
 		player->isAccelerating(true);
 	}
+	// Deccelerates the player if the down arrow key is pressed
 	else if (input->isKeyDown(sf::Keyboard::Down))
 	{
 		player->setXAcceleration(-sin(player->getRotation() / 180 * 3.14159265) * 0.2);
@@ -142,10 +144,12 @@ void Level::handleInput()
 		player->setYAcceleration(0);
 		player->isAccelerating(false);
 	}
+	// Rotates the player right if the right arrow key is pressed
 	if (input->isKeyDown(sf::Keyboard::Right))
 	{
 		player->setRotation(player->getRotation() + 4);
 	}
+	// Rotates the player left if the left arrow key is pressed
 	else if (input->isKeyDown(sf::Keyboard::Left))
 	{
 		player->setRotation(player->getRotation() - 4);
@@ -156,6 +160,16 @@ void Level::handleInput()
 		paused = true;
 		levelMusic.pause();
 	}
+}
+
+
+void Level::AsteroidMove(){
+
+	//Asteroid->setXAcceleration(sin(rand() / 180 * 3.14159265) * rand());
+	//Asteroid->setYAcceleration(cos(rand() / 180 * 3.14159265) * rand());
+	//Asteroid->isAccelerating(true);
+
+
 }
 
 

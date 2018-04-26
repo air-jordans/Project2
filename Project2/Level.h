@@ -25,6 +25,7 @@ private:
 	bool checkFinish();
 	void update();
 	void handleInput();
+	void AsteroidMove();
 	void render();
 	void handleGameMenuInput();
 	void renderGameMenu();

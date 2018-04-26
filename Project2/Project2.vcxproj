@@ -126,6 +126,7 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="Asteroid.cpp" />
     <ClCompile Include="CompletionBar.cpp" />
     <ClCompile Include="GameStar.cpp" />
     <ClCompile Include="Input.cpp" />
@@ -137,6 +138,7 @@
     <ClCompile Include="MenuStar.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="Asteroid.h" />
     <ClInclude Include="CompletionBar.h" />
     <ClInclude Include="GameStar.h" />
     <ClInclude Include="Input.h" />
