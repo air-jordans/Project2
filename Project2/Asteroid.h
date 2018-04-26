@@ -23,13 +23,13 @@ public:
 	void setXAcceleration(float x);
 	void setYAcceleration(float y);
 	void setRotation(float rot);
-	void setTexture(sf::String filename);
+	void setTextureRef(sf::Texture* tex);
 	void setTextureRect(sf::IntRect rect);
 private:
 	sf::Vector2f position;
 	sf::Vector2f velocity;
 	sf::Vector2f acceleration;
-	sf::Texture tex;
+	sf::Texture* tex;
 	sf::Sprite sprite;
 
 	int frameCount = 0;

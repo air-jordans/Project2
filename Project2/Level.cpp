@@ -22,6 +22,7 @@ Level::Level(sf::RenderWindow* hwnd, Input* in)
 	initGameMenu();
 	initCompletionBar();
 	initTimerText();
+	initAsteroids();
 	setMusic("res/music/level0.wav");
 }
 
@@ -79,6 +80,20 @@ void Level::initTimerText() {
 	timerDisplay.setCharacterSize(20);
 	timerDisplay.setStyle(sf::Text::Regular);
 	timerDisplay.setFont(arial);
+}
+
+void Level::initAsteroids() {
+	asteroids = std::vector<Asteroid>(400);
+	sf::Texture asteroidTexture;
+	if (!asteroidTexture.loadFromFile("filename.fuck"));
+	for (int i = 0; i < asteroids.size(); i++) {
+		asteroids[i].setTextureRef(&asteroidTexture);
+		asteroids[i].setRotation(((double)rand()/RAND_MAX) * 360);
+		asteroids[i].setXPosition(0);
+		asteroids[i].setYPosition(0);
+		asteroids[i].setXVelocity(0);
+		asteroids[i].setYVelocity(0);
+	}
 }
 
 bool Level::checkFinish() {
@@ -163,13 +178,17 @@ void Level::handleInput()
 }
 
 
-void Level::AsteroidMove(){
+void Level::updateAsteroids(){
+	for (int i = 0; i < asteroids.size(); i++) {
+		asteroids[i].move();
+		// detect if too far from player and reset position if too far away
+	}
+}
 
-	//Asteroid->setXAcceleration(sin(rand() / 180 * 3.14159265) * rand());
-	//Asteroid->setYAcceleration(cos(rand() / 180 * 3.14159265) * rand());
-	//Asteroid->isAccelerating(true);
-
-
+void Level::renderAsteroids() {
+	for (int i = 0; i < asteroids.size(); i++) {
+		asteroids[i]->render(window);
+	}
 }
 
 

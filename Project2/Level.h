@@ -25,10 +25,11 @@ private:
 	bool checkFinish();
 	void update();
 	void handleInput();
-	void AsteroidMove();
+	void updateAsteroids();
 	void render();
 	void handleGameMenuInput();
 	void renderGameMenu();
+	void renderAsteroids();
 	void updateBackground();
 	void drawBackground();
 	void drawTimer();
@@ -36,6 +37,7 @@ private:
 	void initGameMenu();
 	void initCompletionBar();
 	void initTimerText();
+	void initAsteroids();
 	void setFinish(int fin);
 	void setMusic(sf::String filename);
 	void exitLevel();
@@ -53,4 +55,5 @@ private:
 	sf::Sprite gameMenu;
 	sf::Clock timer;
 	std::vector<GameStar> stars;
+	std::vector<Asteroid> asteroids;
 };
