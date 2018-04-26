@@ -35,7 +35,6 @@ void Player::render(sf::RenderWindow* window) {
 
 	if (accelerating) {
 		if (frameCount > 1) {
-			std::cout << currentSprite;
 			sprite.setTextureRect(sf::IntRect(0, currentSprite * 60, 36, 60));
 			currentSprite+=1;
 			if (currentSprite > 20) {

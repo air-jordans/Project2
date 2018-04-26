@@ -8,7 +8,6 @@ public:
 	~Asteroid();
 	void render(sf::RenderWindow* window);
 	void move();
-	void isAccelerating(bool accel);
 	float getX();
 	float getY();
 	float getXVelocity();
@@ -29,11 +28,7 @@ private:
 	sf::Vector2f position;
 	sf::Vector2f velocity;
 	sf::Vector2f acceleration;
-	sf::Texture* tex;
+	sf::Texture* tex = 0;
 	sf::Sprite sprite;
-
-	int frameCount = 0;
-	int currentSprite = 1;
-	bool accelerating = false;
 	float rotation = 0;
 };

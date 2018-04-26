@@ -7,6 +7,7 @@
 #include "Player.h"
 #include "GameStar.h"
 #include "CompletionBar.h"
+#include "Asteroid.h"
 class Level {
 public:
 	Level();

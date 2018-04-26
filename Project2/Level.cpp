@@ -1,7 +1,7 @@
 #include "Level.h"
 #include "Input.h"
 #include "Player.h"
-#include "Asteroid.h"
+
 Level::Level() {
 
 }
@@ -80,15 +80,19 @@ void Level::initTimerText() {
 	timerDisplay.setCharacterSize(20);
 	timerDisplay.setStyle(sf::Text::Regular);
 	timerDisplay.setFont(arial);
+	timerDisplay.setFont(arial);
 }
 
 void Level::initAsteroids() {
 	asteroids = std::vector<Asteroid>(400);
+
 	sf::Texture asteroidTexture;
 	if (!asteroidTexture.loadFromFile("filename.fuck"));
 	for (int i = 0; i < asteroids.size(); i++) {
 		asteroids[i].setTextureRef(&asteroidTexture);
 		asteroids[i].setRotation(((double)rand()/RAND_MAX) * 360);
+
+		// TODO: set initial positions and velocities
 		asteroids[i].setXPosition(0);
 		asteroids[i].setYPosition(0);
 		asteroids[i].setXVelocity(0);
@@ -177,7 +181,7 @@ void Level::handleInput()
 	}
 }
 
-
+// Call from update()
 void Level::updateAsteroids(){
 	for (int i = 0; i < asteroids.size(); i++) {
 		asteroids[i].move();
@@ -185,9 +189,10 @@ void Level::updateAsteroids(){
 	}
 }
 
+// Call from render()
 void Level::renderAsteroids() {
 	for (int i = 0; i < asteroids.size(); i++) {
-		asteroids[i]->render(window);
+		asteroids[i].render(window);
 	}
 }
 
