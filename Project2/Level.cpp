@@ -93,10 +93,10 @@ void Level::initAsteroids() {
 		asteroids[i].setRotation(((double)rand()/RAND_MAX) * 360);
 
 		// TODO: set initial positions and velocities
-		asteroids[i].setXPosition(0);
-		asteroids[i].setYPosition(0);
-		asteroids[i].setXVelocity(0);
-		asteroids[i].setYVelocity(0);
+		asteroids[i].setXPosition(rand()/RAND_MAX);
+		asteroids[i].setYPosition(rand()/RAND_MAX);
+		asteroids[i].setXVelocity(rand()/RAND_MAX);
+		asteroids[i].setYVelocity(rand()/RAND_MAX);
 	}
 }
 
@@ -138,6 +138,7 @@ void Level::update()
 	if (checkFinish()) {
 		exitLevel();
 	}
+	updateAsteroids();
 	updateBackground();
 	cb.setPercentage(player->getY() / (float)finishLine);
 }
@@ -183,9 +184,30 @@ void Level::handleInput()
 
 // Call from update()
 void Level::updateAsteroids(){
+	int dist = 3000;
 	for (int i = 0; i < asteroids.size(); i++) {
 		asteroids[i].move();
 		// detect if too far from player and reset position if too far away
+		for (int i = 0; i < asteroids.size(); i++) {
+			if (asteroids[i].getX() - player->getX() > dist)
+			{
+				asteroids[i].setXPosition(player->getX() - dist);
+			}
+			if ( player->getX() - asteroids[i].getX() > dist)
+			{
+				asteroids[i].setXPosition(player->getX() - dist);
+			}
+			if (asteroids[i].getY() - player->getY() > dist)
+			{
+				asteroids[i].setXPosition(player->getX() - dist);
+			}
+			if (player->getY() - asteroids[i].getY() > dist)
+			{
+				asteroids[i].setYPosition(player->getY() - dist);
+			}
+
+
+		}
 	}
 }
 
@@ -237,6 +259,7 @@ void Level::render()
 	drawBackground();
 	cb.render();
 	drawTimer();
+	renderAsteroids();
 	player->render(window);
 }
 
